@@ -1,0 +1,15 @@
+[project]
+name = "ml-case-studies"
+version = "0.1.0"
+description = "Machine learning case studies and experiments in Jupyter notebooks"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "matplotlib",
+    "seaborn",
+    "jupyter",
+    "notebook"
+]
