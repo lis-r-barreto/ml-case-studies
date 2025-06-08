@@ -1176,6 +1176,7 @@ name = "ml-case-studies"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "joblib" },
     { name = "jupyter" },
     { name = "matplotlib" },
     { name = "notebook" },
@@ -1188,6 +1189,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "joblib" },
     { name = "jupyter" },
     { name = "matplotlib" },
     { name = "notebook" },
