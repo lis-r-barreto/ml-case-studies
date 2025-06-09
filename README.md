@@ -1,75 +1,37 @@
 # Estudos em Machine Learning 📊🤖  
 
-Este repositório reúne experimentos, análises e comparações de diferentes algoritmos de **Machine Learning**, aplicados a diversos **datasets**. O objetivo é explorar técnicas de aprendizado de máquina, avaliando modelos e suas métricas de desempenho em diferentes cenários.  
+Repositório com experimentos, análises e comparações de algoritmos de **Machine Learning** em diversos datasets. Aqui você encontra:
 
-## 📌 O que você encontrará aqui:
-- Implementações de algoritmos de **classificação, regressão e clustering**  
+- Algoritmos de classificação, regressão e clustering  
 - Comparação de modelos e ajuste de hiperparâmetros  
-- Aplicação da metodologia **CRISP-DM** para estruturação dos estudos  
-- Análises exploratórias de datasets públicos  
-- Código bem documentado e explicações sobre os experimentos  
-
-Este repositório é um espaço de aprendizado contínuo e aprimoramento das habilidades em ciência de dados e aprendizado de máquina. 🚀  
-
-📢 **Contribuições e feedbacks são bem-vindos!**  
+- Aplicação da metodologia **CRISP-DM**  
+- Análises exploratórias e código documentado  
 
 ---
 
-## 📦 Persistência de Dados com Docker: Montando Volumes
+## 📦 Como salvar seus arquivos com Docker
 
-Para garantir que todos os arquivos criados ou modificados nos notebooks (incluindo modelos `.pkl`, datasets e anotações) sejam salvos diretamente na sua máquina, utilize o recurso de **volumes do Docker** ao executar o container Jupyter.
+Para garantir que notebooks, modelos `.pkl` e outros arquivos criados no Jupyter sejam salvos na sua máquina, use volumes Docker:
 
-### Por que usar volumes?
-
-- **Persistência:** Tudo que você salvar no Jupyter estará disponível na sua pasta local, mesmo após parar ou remover o container.
-- **Facilidade:** Não é necessário baixar manualmente arquivos do container.
-- **Integração:** Você pode editar arquivos tanto pelo Jupyter quanto pelo seu editor local.
-- **Backup e versionamento:** Facilita o uso de ferramentas como Git para versionar seus notebooks e modelos.
-
-### Como montar o volume
-
-1. **Escolha uma pasta local** para armazenar seus notebooks e arquivos (exemplo: `notebooks/`).
-
-2. **Execute o container com o parâmetro `-v`:**
-
+1. **Crie uma pasta local** (ex: `notebooks/`).
+2. **Construa a imagem:**
    ```sh
-   docker run -p 8888:8888 -v "$(pwd)/notebooks":/home/jovyan/work minha-imagem-jupyter
+   docker build -t ml-jupyter .
    ```
-
-   - `$(pwd)/notebooks` é o caminho local da sua pasta de trabalho.
-   - `/home/jovyan/work` é o diretório de trabalho padrão do Jupyter dentro do container.
-   - `minha-imagem-jupyter` é o nome da imagem Docker que você construiu.
-
-3. **Acesse o Jupyter Notebook** pelo navegador usando o link fornecido no terminal.
-
-4. **Todos os arquivos criados ou modificados** no Jupyter aparecerão automaticamente na sua pasta local, incluindo modelos salvos em subdiretórios como `models/`.
-
----
-
----
-
-### Exemplo prático
-
-1. **Construa a imagem Docker:**
-
+3. **Rode o container montando a pasta:**
    ```sh
-   docker build -t minha-imagem-jupyter .
+   docker run -p 8888:8888 -v "$(pwd)/notebooks":/home/jovyan/work ml-jupyter
    ```
+4. **Acesse o Jupyter pelo navegador** (link no terminal).
 
-2. **Execute o container montando sua pasta local:**
+Tudo que for salvo no Jupyter estará disponível na sua pasta local, inclusive arquivos em subdiretórios como `models/`.
 
-   ```sh
-   docker run -p 8888:8888 -v "$(pwd)/notebooks":/home/jovyan/work minha-imagem-jupyter
-   ```
-
-Agora, qualquer notebook, dataset ou arquivo `.pkl` salvo no Jupyter estará disponível em `notebooks/` no seu computador.  
-Se o seu código salva modelos em `models/`, eles aparecerão em `notebooks/models/`.
+> **Dica:** Use Git para versionar seus notebooks e adicione arquivos grandes ao `.gitignore` se necessário.
 
 ---
 
-> **Dica:**  
-> Para compartilhar ou versionar seus notebooks e modelos, utilize o Git normalmente na sua pasta local.
-> 
-> Para manter seu ambiente limpo, lembre-se de adicionar arquivos grandes ou sensíveis ao `.gitignore` se necessário.
+## 📚 Notebooks Disponíveis
 
----
+| Tipo                      | Título                                                                 | Link do Binder                                                                                                                                         |
+|---------------------------|------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Classificação Multiclasse | Classificação Multiclasse com o Dataset Iris: Um Estudo Comparativo    | [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lis-r-barreto/ml-case-studies/HEAD?urlpath=%2Fdoc%2Ftree%2Fnotebooks%2F01_classificacao_multiclasse_iris_estudo_comparativo.ipynb) |
