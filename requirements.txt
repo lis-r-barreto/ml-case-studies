@@ -2,4 +2,6 @@ joblib
 xgboost
 lightgbm
 catboost
+optuna
+mlflow
 kagglehub
